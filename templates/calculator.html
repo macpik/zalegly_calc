@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie</title>
+</head>
+<body>
+<label for="choose_currency">Choose currency:</label>
+<form method="POST" action="/api/v1/calc">
+<select name="currency" id="currency">
+{%for rate in rates%}
+<option value="{{rate['code']}}">{{rate["code"]}}</option>
+{% endfor %}</select>
+<br><label for="number">Number</label>
+<br><input type="number" value="" min="0" id="number" name="number">
+<br><input type="submit" value="Submit">
+</form>
+
+{% if result %}
+    <h2>Result: {{ result }}</h2>
+{% endif %}
+</body>
+</html>
